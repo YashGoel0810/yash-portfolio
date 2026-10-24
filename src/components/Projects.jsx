@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Plus } from 'lucide-react'
+import { ArrowUpRight, Plus } from 'lucide-react'
 import { projects } from '../content'
 
 export default function Projects() {
@@ -37,7 +37,12 @@ export default function Projects() {
                 </button>
               </h3>
               <div id={`proj-${p.n}`} className="proj-body" role="region" aria-label={p.title} hidden={false} inert={!isOpen}>
-                <div className="proj-inner">
+                <div className={`proj-inner${p.shot ? ' has-shot' : ''}`}>
+                  {p.shot && (
+                    <figure className="proj-shot">
+                      <img src={p.shot} alt={`${p.title} homepage`} width="800" height="591" loading="lazy" decoding="async" />
+                    </figure>
+                  )}
                   <div className="proj-main">
                     <p className="proj-summary">{p.summary}</p>
                     <p className="proj-label">What I built</p>
@@ -48,6 +53,11 @@ export default function Projects() {
                     </ul>
                   </div>
                   <div className="proj-side">
+                    {p.link && (
+                      <a className="proj-link" href={p.link.href} target="_blank" rel="noopener">
+                        {p.link.label} <ArrowUpRight size={16} aria-hidden="true" />
+                      </a>
+                    )}
                     <dl className="proj-results">
                       {p.result.map((r) => (
                         <div key={r.l}>

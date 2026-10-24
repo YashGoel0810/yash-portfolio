@@ -11,7 +11,7 @@ export const person = {
   resume: `${BASE}resume.pdf`, // drop the PDF into site/public/resume.pdf
   location: 'Gurgaon, India',
   // Typed under the name in the splash and hero, one after another.
-  roles: ['software builder', 'full-stack in progress', 'problem fixer'],
+  roles: ['software builder', 'agents & systems', 'problem fixer'],
 }
 
 export const hero = {
@@ -47,13 +47,13 @@ export const story = {
     ', reading balance sheets and wondering why good businesses still got stuck. Then I got curious about ',
     { t: 'the fix', mark: 'circle' },
     ', not just the numbers. AI made building feel possible, so I ',
-    { t: 'taught myself to make software', mark: 'wave' },
+    { t: 'taught myself to ship agents and systems', mark: 'wave' },
     ', ',
     { t: 'one real problem at a time', mark: 'hl-yellow' },
-    '. Now I’m ',
-    { t: 'working my way to full-stack', mark: 'hl-pink' },
+    '. Now I ',
+    { t: 'build the systems businesses run on', mark: 'hl-pink' },
     ', ',
-    { t: 'and enjoying every bug on the way.', mark: 'underline' },
+    { t: 'and enjoy every bug on the way.', mark: 'underline' },
   ],
   notes: [
     { color: '#fbe7a1', tilt: -3, text: 'Commerce → code. Still a plot twist to my family.', sub: 'the short version' },
@@ -87,7 +87,7 @@ export const process = {
 }
 
 export const projects = {
-  eyebrow: "Software I've built",
+  eyebrow: 'Projects I built',
   title: 'Problems I got tired of watching.',
   sub: "Each one started as somebody's headache. Tap a name to see the whole build.",
   items: [
@@ -96,6 +96,8 @@ export const projects = {
       title: 'Real Ackres',
       tag: 'Client · real estate · live',
       color: '#f3c96b',
+      shot: `${BASE}shots/real-ackres.jpg`,
+      link: { href: 'https://realackres.com', label: 'Visit realackres.com' },
       summary:
         'A real estate team was losing leads between ad dashboards, property portals and phone calls. I built their whole stack: the public website, the admin panel and a CRM where every enquiry lands, gets an owner, and stays visible until someone closes it.',
       built: [
@@ -115,6 +117,8 @@ export const projects = {
       title: 'Pitaari',
       tag: 'Silver gifting · store, back office, SRM',
       color: '#c0c6d0',
+      shot: `${BASE}shots/pitaari.jpg`,
+      link: { href: 'https://www.pitaari.co', label: 'Visit pitaari.co' },
       summary:
         "Everything a silver gifting brand runs on, built as three connected pieces: the store customers see, the back office they don't, and a supplier relationship manager (SRM) for finding who makes it.",
       built: [
@@ -131,18 +135,18 @@ export const projects = {
     {
       n: '03',
       title: 'Gifting board',
-      tag: 'Catalogue + hamper builder',
+      tag: 'SRM for corporate gifters',
       color: '#7fb0e8',
       summary:
-        'Sixty-five supplier PDFs turned into one catalogue you can actually trust, with a hamper builder on top: give it a budget, get back hampers that feel worth more than they cost.',
+        "An SRM built for corporate gifters. Every supplier's catalogue in one place you can trust, a hamper curator that builds to a budget, and AI photo generation that turns the picked products into hamper shots in the client's brand guidelines.",
       built: [
-        'Pulled 3,677 products out of 65 supplier PDFs',
-        'Every price linked to the page it came from, so anyone can check it',
+        'Pulled 3,677 products out of 65 supplier PDFs, every price linked to the page it came from',
         'Caught 295 wrong prices, including one listed at ₹95 that was really ₹6,000',
-        'Hamper builder that tries combinations within a budget, say ₹2,000, and ranks them on perceived value',
+        'Hamper curator that tries combinations within a budget, say ₹2,000, and ranks them on perceived value',
+        "AI photo generation: the chosen products become finished hamper photos in the client's brand look",
       ],
       result: [
-        { v: '3,677', l: 'products, one board' },
+        { v: '3,677', l: 'products from 65 suppliers' },
         { v: '295', l: 'price errors caught' },
       ],
     },
@@ -186,28 +190,6 @@ export const projects = {
       built: ['Studio backgrounds and lighting around the real piece', 'Jewellery pixels stay untouched', 'A quality gate before any image is used'],
       result: [{ v: '0', l: 'pixels of jewellery redrawn' }],
     },
-    {
-      n: '07',
-      title: 'Lead scoring & routing',
-      tag: 'n8n pipeline',
-      color: '#3b7de0',
-      summary: 'Leads from several places, scored and sorted, so the hot ones reach a rep first.',
-      built: ['Pulls leads in from multiple sources', 'Scores each one', 'Routes high-intent leads to the right rep'],
-      result: [{ v: 'Multi-source', l: 'leads, one queue' }],
-    },
-    {
-      n: '08',
-      title: 'AI bootcamps for D2C founders',
-      tag: 'D2C Insider · with Snitch’s CTO',
-      color: '#f0663a',
-      summary:
-        "Two cohorts teaching D2C founders to put AI to work in their own businesses, run in partnership with Snitch's CTO, with founders from brands including Blue Tokai and Nicobar.",
-      built: ['Designed the program end to end', 'Ran both cohorts live'],
-      result: [
-        { v: '54', l: 'founders taught' },
-        { v: '₹13.5L', l: 'program revenue' },
-      ],
-    },
   ],
 }
 
@@ -218,13 +200,13 @@ export const journey = {
   stops: [
     { code: '01', icon: 'Gem', color: '#e0566a', title: 'Learning how a business runs', place: 'Family jewellery business', year: '2020 → now', stat: '₹10L+', statLabel: 'B2B deals negotiated',
       desc: 'Business analyst in our 75-year-old family business: inventory across 60+ SKUs, supplier terms and negotiations.' },
-    { code: '02', icon: 'Salad', color: '#5fbf8f', title: 'First venture, in college', place: 'Healthy meals & fruit', year: 'College', stat: '₹2L', statLabel: 'revenue in 2 months',
-      desc: 'A healthy-meal and fresh-fruit service for students. Two months, ₹2L in revenue, ₹1L in profit.' },
+    { code: '02', icon: 'Salad', color: '#5fbf8f', title: 'First venture, in college', place: 'Fuel Station', year: 'College', stat: '₹2L', statLabel: 'revenue in 2 months',
+      desc: 'My college venture: healthy meals and fresh fruit for students. Two months, ₹2L in revenue, ₹1L in profit. Since shut down.' },
     { code: '03', icon: 'Landmark', color: '#7fb0e8', title: 'Learning how regulated work runs', place: 'YES Securities', year: '2025', stat: '4', statLabel: 'NISM certifications',
       desc: 'Growth officer intern on client servicing and compliant documentation. Certified in Equity Derivatives, Mutual Funds, Securities Operations & Risk, and Research Analyst.' },
     { code: '04', icon: 'GraduationCap', color: '#f0663a', title: 'Teaching founders to use AI', place: 'D2C Insider', year: '2026', stat: '54', statLabel: 'founders taught',
       desc: "Two AI bootcamp cohorts for D2C founders, run with Snitch's CTO. ₹13.5L in program revenue." },
-    { code: '05', icon: 'Bot', color: '#f3c96b', title: 'Building software for real', place: 'Independent · Masters’ Union', year: '2026', stat: '8', statLabel: 'builds on this site',
+    { code: '05', icon: 'Bot', color: '#f3c96b', title: 'Building software for real', place: 'Independent · Masters’ Union', year: '2026', stat: '6', statLabel: 'projects on this site',
       desc: 'A live CRM for a real estate team, a full stack for a silver gifting brand, and tools traders and jewellers can use.' },
   ],
 }
@@ -236,9 +218,8 @@ export const ventures = {
   items: [
     { name: 'Pitaari', kind: 'Silver gifting brand', badge: 'pre-launch', icon: 'Gift', tilt: -2, color: '#f6d6cf' },
     { name: 'Troofrnd', kind: 'LinkedIn content SaaS, with a co-founder', badge: 'building', icon: 'PenLine', tilt: 1.5, color: '#fbe7b5' },
-    { name: 'Healthy meals & fruit', kind: 'College venture · ₹2L revenue, ₹1L profit in 2 months', badge: 'done', icon: 'Salad', tilt: -1, color: '#d4ecd9' },
+    { name: 'Fuel Station', kind: 'College venture · healthy meals & fresh fruit · ₹2L revenue, ₹1L profit in 2 months', badge: 'shut down', icon: 'Salad', tilt: -1, color: '#d4ecd9' },
     { name: 'Noctura Customs', kind: 'One-month dropshipping run · JDM accessories · ₹80K revenue', badge: 'done', icon: 'Car', tilt: 2, color: '#d9e6f5' },
-    { name: 'Fuel station', kind: 'Fuel station venture', badge: 'running', icon: 'Fuel', tilt: -1.5, color: '#e3d7f3' },
   ],
 }
 
@@ -290,7 +271,7 @@ export const stack = {
 
 export const contact = {
   title: ['Got a messy problem?', "Let's fix it."],
-  sub: "Founders' offices, AI automation, product builds. Tell me what's broken and I'll tell you how I'd fix it.",
+  sub: "Founders' offices, AI agents, automation. Tell me what's broken and I'll tell you how I'd fix it.",
   keys: [
     { k: 'E', label: 'Email', icon: 'Mail', color: '#e0443b', note: 'Roles, projects, or just hi.', href: 'mailto:ygoel0810@gmail.com', copy: 'ygoel0810@gmail.com' },
     { k: 'L', label: 'LinkedIn', icon: 'Linkedin', color: '#0a66c2', note: 'The long version of my story.', href: 'https://linkedin.com/in/yashgoel0810' },
