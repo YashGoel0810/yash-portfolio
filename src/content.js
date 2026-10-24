@@ -28,7 +28,7 @@ export const hero = {
     kicker: 'Off the clock',
     title: "Hi, I'm Yash. The weekend version.",
     lists: [
-      { h: "Things I can't stop doing", items: ['Thinking up AI projects', 'Snooker, or any sport going', 'Hosting poker nights'] },
+      { h: "Things I can't stop doing", items: ['Thinking up AI projects', 'Building maybe the next big thing (idle in my GitHub)', 'Snooker, or any sport going', 'Hosting poker nights'] },
       { h: 'Habits', items: ['Figure out the whole problem', 'Write it down', "Ship before it's perfect"] },
     ],
   },
