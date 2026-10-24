@@ -94,47 +94,113 @@ export const projects = {
     {
       n: '01',
       title: 'Real Ackres',
+      shots: [
+        { src: `${BASE}shots/ra-today.jpg`, label: 'CRM · Today' },
+        { src: `${BASE}shots/ra-pipeline.jpg`, label: 'CRM · Pipeline' },
+        { src: `${BASE}shots/ra-leads.jpg`, label: 'CRM · Leads' },
+        { src: `${BASE}shots/ra-lead.jpg`, label: 'CRM · Lead page' },
+        { src: `${BASE}shots/ra-reports.jpg`, label: 'CRM · Reports' },
+        { src: `${BASE}shots/ra-admin.jpg`, label: 'Website admin' },
+      ],
       tag: 'Client · real estate · live',
       color: '#f3c96b',
-      shot: `${BASE}shots/real-ackres.jpg`,
       link: { href: 'https://realackres.com', label: 'Visit realackres.com' },
       summary:
-        'A real estate team was losing leads between ad dashboards, property portals and phone calls. I built their whole stack: the public website, the admin panel and a CRM where every enquiry lands, gets an owner, and stays visible until someone closes it.',
-      built: [
-        'Public website at realackres.com, with enquiry forms wired straight into the CRM',
-        'CRM that pulls in leads from the site, Meta and Google ads, and three property portals',
-        'Auto-assignment to agents, with escalation when nobody picks a lead up',
-        'Daily digests and SLA alerts, so nothing goes cold quietly',
-        'Admin panel for listings and the team, self-hosted behind Cloudflare',
+        'A real estate team was losing leads between ad dashboards, property portals and phone calls. I built their whole stack: the public website, a CMS to run it, and a CRM where every enquiry lands, gets an owner, and stays visible until someone closes it.',
+      groups: [
+        {
+          h: 'Leads, from everywhere',
+          items: [
+            'Website forms and WhatsApp',
+            'Meta lead ads and Google Ads lead forms',
+            '99acres, MagicBricks and Housing.com',
+            'Spam checks on every form, and where each visitor came from',
+          ],
+        },
+        {
+          h: 'The CRM',
+          items: [
+            'Today dashboard: what needs doing first',
+            'Pipeline board and a searchable leads table',
+            'A full page per lead, with history and next steps',
+            'Automatic assignment and recycling when a lead goes untouched',
+            'Site visits, synced to a private Google Calendar',
+            'Lost reasons, change requests, team roles, import and export',
+          ],
+        },
+        {
+          h: 'Website and marketing',
+          items: [
+            'Public site with project pages and private share links',
+            'CMS to edit projects, blog posts and site settings',
+            'Meta Pixel and Conversions API, with lead quality sent back to Meta',
+            'SEO grader in the project editor, and a cookie-free visitor counter',
+          ],
+        },
       ],
       result: [
-        { v: '6', l: 'lead sources, one inbox' },
-        { v: '3', l: 'products: site, admin, CRM' },
+        { v: '7', l: 'lead sources, one inbox' },
+        { v: '3', l: 'products: site, CMS, CRM' },
       ],
     },
     {
       n: '02',
       title: 'Pitaari',
+      shots: [
+        { src: `${BASE}shots/pitaari-khata.jpg`, label: 'Back office · Khata' },
+        { src: `${BASE}shots/pitaari-ledger.jpg`, label: 'Back office · Party ledger' },
+        { src: `${BASE}shots/pitaari-purchase.jpg`, label: 'Back office · New purchase' },
+        { src: `${BASE}shots/pitaari-search.jpg`, label: 'Back office · Search' },
+      ],
       tag: 'Silver gifting · store, back office, SRM',
       color: '#c0c6d0',
-      shot: `${BASE}shots/pitaari.jpg`,
       link: { href: 'https://www.pitaari.co', label: 'Visit pitaari.co' },
       summary:
-        "Everything a silver gifting brand runs on, built as three connected pieces: the store customers see, the back office they don't, and a supplier relationship manager (SRM) for finding who makes it.",
-      built: [
-        "Storefront that prices every piece live off the day's silver rate",
-        'Back office for silver lots, karigar jobs and an SEO desk',
-        'SRM with 3,716 vendors from trade fairs and B2B lists, moved through enquiry, quote and scoring',
-        'Quotes ranked side by side instead of buried in WhatsApp',
+        "Everything a silver gifting brand runs on: the store customers see, the back office they don't, and a sourcing system that finds the people who make it.",
+      groups: [
+        {
+          h: 'Store',
+          items: [
+            "Every piece priced live off the day's silver rate",
+            'Buyback at the metal rate, coupons and reviews',
+            'Meta catalogue and Conversions API wired in',
+          ],
+        },
+        {
+          h: 'Back office',
+          items: [
+            'Orders, payments and branded invoices',
+            'Inventory: stock per product, and silver lots by weight',
+            'Khata book: who owes what, with WhatsApp payment reminders',
+            'Production: karigar job work tracked from metal issued to returned',
+            'Corporate gifting deals, priced on the terms typed in',
+            'Customers, enquiries and a sales pipeline',
+            'Festival campaigns, emails and an SEO desk with a blog writer',
+            'AI photo studio for product shots, plus a traffic view',
+          ],
+        },
+        {
+          h: 'Sourcing (SRM)',
+          items: [
+            'Finds suppliers across the internet and from trade fair exhibitor lists: IIJS Premiere, IIJS Signature and the Delhi Jewellery & Gem Fair',
+            'Drafts enquiries, then compares quotes on one metal rate',
+            'Deal boards for buying and selling, purchase orders and goods receipt',
+          ],
+        },
       ],
       result: [
-        { v: '3,716', l: 'vendors in the SRM' },
+        { v: '3', l: 'systems, one brand' },
         { v: '2,324', l: 'automated tests passing' },
       ],
     },
     {
       n: '03',
       title: 'Gifting board',
+      shots: [
+        { src: `${BASE}shots/gift-browse.jpg`, label: 'Browse' },
+        { src: `${BASE}shots/gift-quote.jpg`, label: 'Quote builder' },
+        { src: `${BASE}shots/gift-sourcing.jpg`, label: 'Compare suppliers' },
+      ],
       tag: 'SRM for corporate gifters',
       color: '#7fb0e8',
       summary:
@@ -153,6 +219,15 @@ export const projects = {
     {
       n: '04',
       title: 'Munshi',
+      shots: [
+        { src: `${BASE}shots/munshi-dashboard.jpg`, label: 'Dashboard' },
+        { src: `${BASE}shots/munshi-udhaar.jpg`, label: 'Udhaar' },
+        { src: `${BASE}shots/munshi-orders.jpg`, label: 'Orders' },
+        { src: `${BASE}shots/munshi-leads.jpg`, label: 'Leads' },
+        { src: `${BASE}shots/munshi-catalog.jpg`, label: 'Catalog' },
+        { src: `${BASE}shots/munshi-inventory.jpg`, label: 'Inventory' },
+        { src: `${BASE}shots/munshi-automations.jpg`, label: 'Automations' },
+      ],
       tag: 'WhatsApp assistant for traders',
       color: '#5fbf8f',
       summary:
@@ -183,6 +258,11 @@ export const projects = {
     {
       n: '06',
       title: 'Jewellery shoot pipeline',
+      shots: [
+        { src: `${BASE}shots/shoot-1.jpg`, label: 'Pendant' },
+        { src: `${BASE}shots/shoot-2.jpg`, label: 'Ring' },
+        { src: `${BASE}shots/shoot-3.jpg`, label: 'Ring' },
+      ],
       tag: 'Client tool · product photos',
       color: '#e0566a',
       summary:

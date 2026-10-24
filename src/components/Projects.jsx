@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowUpRight, Plus } from 'lucide-react'
+import Carousel from './Carousel'
 import { projects } from '../content'
 
 export default function Projects() {
@@ -37,20 +38,35 @@ export default function Projects() {
                 </button>
               </h3>
               <div id={`proj-${p.n}`} className="proj-body" role="region" aria-label={p.title} hidden={false} inert={!isOpen}>
-                <div className={`proj-inner${p.shot ? ' has-shot' : ''}`}>
-                  {p.shot && (
-                    <figure className="proj-shot">
-                      <img src={p.shot} alt={`${p.title} homepage`} width="800" height="591" loading="lazy" decoding="async" />
-                    </figure>
+                <div className={`proj-inner${p.shots?.length ? ' has-shot' : ''}`}>
+                  {p.shots?.length > 0 && (
+                    <div className="proj-shot">
+                      <Carousel shots={p.shots} title={p.title} />
+                    </div>
                   )}
                   <div className="proj-main">
                     <p className="proj-summary">{p.summary}</p>
-                    <p className="proj-label">What I built</p>
-                    <ul className="proj-built">
-                      {p.built.map((b) => (
-                        <li key={b}>{b}</li>
-                      ))}
-                    </ul>
+                    {p.groups ? (
+                      p.groups.map((g) => (
+                        <div key={g.h} className="proj-group">
+                          <p className="proj-label">{g.h}</p>
+                          <ul className="proj-built">
+                            {g.items.map((b) => (
+                              <li key={b}>{b}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))
+                    ) : (
+                      <>
+                        <p className="proj-label">What I built</p>
+                        <ul className="proj-built">
+                          {p.built.map((b) => (
+                            <li key={b}>{b}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
                   </div>
                   <div className="proj-side">
                     {p.link && (
