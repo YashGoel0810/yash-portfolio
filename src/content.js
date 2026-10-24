@@ -248,6 +248,11 @@ export const projects = {
     {
       n: '05',
       title: 'Forge',
+      shots: [
+        { src: `${BASE}shots/forge-board.jpg`, label: 'Job board' },
+        { src: `${BASE}shots/forge-job.jpg`, label: 'Why Forge thinks it fits' },
+        { src: `${BASE}shots/forge-chat.jpg`, label: 'Ask Forge' },
+      ],
       tag: 'My job search, as a pipeline',
       color: '#a98be0',
       summary:
