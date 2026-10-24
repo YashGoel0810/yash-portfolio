@@ -1059,8 +1059,8 @@ button {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
-  gap: 24px 8px;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
 }
 .tool {
   display: grid;
@@ -1073,7 +1073,41 @@ button {
   cursor: pointer;
   transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
 }
-.tools-grid.dim .tool:not(.on) {
+.shelves {
+  display: grid;
+  gap: 16px;
+}
+.shelf {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(253, 246, 243, 0.03);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.shelf.live {
+  background: rgba(253, 246, 243, 0.08);
+  border-color: rgba(243, 201, 107, 0.4);
+}
+.shelf-name {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--butter);
+}
+.shelf-name span {
+  margin-left: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--chalk-dim);
+  vertical-align: super;
+}
+.shelves.dim .tool:not(.on) {
   opacity: 0.35;
   filter: grayscale(0.6);
 }
@@ -1141,11 +1175,12 @@ button {
 .hl-yellow { background-image: linear-gradient(100deg, #f8d65c, #f3c96b); }
 .hl-pink { background-image: linear-gradient(100deg, #f6b3a6, #f2a093); }
 .hl-lilac { background-image: linear-gradient(100deg, #d9c8f2, #cdb8ef); }
-.seen .mk[class*='hl-'] {
+.mk.on[class*='hl-'] {
   background-size: 100% 72%;
 }
-.seen .hl-yellow { transition-delay: 0.6s; }
-.seen .hl-pink { transition-delay: 0.9s; }
+.ghost {
+  color: transparent;
+}
 .mk svg {
   position: absolute;
   pointer-events: none;
@@ -1161,7 +1196,7 @@ button {
   stroke-dashoffset: 1;
   transition: stroke-dashoffset 1s ease;
 }
-.seen .mk path {
+.mk.on path {
   stroke-dashoffset: 0;
 }
 .mk-circle svg {
@@ -1171,7 +1206,6 @@ button {
   width: calc(100% + 24px);
   height: 120%;
 }
-.seen .mk-circle path { transition-delay: 0.3s; }
 .mk-wave svg,
 .mk-underline svg {
   left: 0;
@@ -1180,8 +1214,6 @@ button {
   height: 0.32em;
 }
 .mk-wave path { stroke: var(--ink); stroke-width: 2; }
-.seen .mk-wave path { transition-delay: 0.5s; }
-.seen .mk-underline path { transition-delay: 1.2s; }
 .doodle {
   position: absolute;
   fill: none;
@@ -1215,13 +1247,25 @@ button {
   position: relative;
   width: min(300px, 100%);
   padding: 28px 20px 16px;
-  transform: rotate(var(--tilt));
+  transform: rotate(var(--tilt)) scale(0.6);
+  opacity: 0;
   box-shadow: 0 12px 24px rgba(60, 10, 20, 0.14);
   transition: transform 0.3s ease;
 }
+.snote.pop {
+  opacity: 1;
+  transform: rotate(var(--tilt));
+  animation: popIn 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) var(--d) both;
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: rotate(calc(var(--tilt) * 3)) scale(0.6) translateY(20px);
+  }
+}
 .snote:nth-child(2) { justify-self: end; }
 .snote:nth-child(3) { justify-self: start; }
-.snote:hover { transform: rotate(0deg) translateY(-4px); }
+.snote.pop:hover { transform: rotate(0deg) translateY(-4px); }
 .snote p {
   margin: 0;
   font-family: var(--font-hand);
@@ -1600,7 +1644,10 @@ kbd {
     display: none;
   }
   .pin-label {
-    display: none;
+    font-size: 20px;
+  }
+  .journey-head {
+    top: 32px;
   }
 
   .steps {
@@ -1631,6 +1678,11 @@ kbd {
   }
   .tools-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .shelf {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 8px;
   }
   .keys {
     gap: 24px;

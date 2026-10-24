@@ -1,11 +1,33 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Icon from './Icon'
 import { journey } from '../content'
 import { prefersReducedMotion, useScrollProgress } from '../hooks'
 
-const W = 1200
-const H = 700
-const ROAD = 'M90 600 C230 610 250 430 380 430 S560 560 650 440 S700 180 840 200 S1080 330 1110 120'
+// Wide screens walk a road left to right; phones get a tall road that runs bottom to top,
+// so the whole route fits the portrait screen in the overview.
+const LAYOUTS = {
+  wide: {
+    W: 1200,
+    H: 700,
+    road: 'M90 600 C230 610 250 430 380 430 S560 560 650 440 S700 180 840 200 S1080 330 1110 120',
+    streets: ['M-200 300 L1400 260', 'M300 -100 L340 900', 'M760 -100 L700 900', 'M-200 520 L1400 640', 'M1000 -100 L1060 900'],
+    parks: [[250, 250, 90, 50], [980, 520, 110, 60]],
+    river: 'M-200 380 C200 340 500 380 800 330 S1200 300 1400 340',
+    from: [120, 660],
+    to: [960, 90],
+  },
+  tall: {
+    W: 600,
+    H: 1100,
+    road: 'M300 950 C110 930 90 840 220 790 S500 710 420 630 S110 560 190 480 S520 420 430 360 S290 310 320 290',
+    streets: ['M-100 300 L700 260', 'M-100 700 L700 760', 'M150 -100 L190 1300', 'M470 -100 L430 1300'],
+    parks: [[110, 620, 70, 40], [500, 420, 60, 36]],
+    river: 'M-100 520 C150 480 350 560 700 500',
+    from: [230, 1010],
+    to: [360, 250],
+  },
+}
+const pickLayout = () => (typeof window !== 'undefined' && window.innerWidth < 768 ? 'tall' : 'wide')
 const STOP_AT = [0.04, 0.27, 0.5, 0.73, 0.97] // where each stop sits along the road
 const INTRO = 0.1 // share of scroll spent on the overview before the walk starts
 const OUTRO = 0.9
@@ -31,12 +53,21 @@ export default function Journey() {
   const road = useRef(null)
   const p = useScrollProgress(sec)
   const [geo, setGeo] = useState(null)
+  const [layout, setLayout] = useState(pickLayout)
+  const L = LAYOUTS[layout]
+  const { W, H } = L
+
+  useEffect(() => {
+    const onResize = () => setLayout(pickLayout())
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   useLayoutEffect(() => {
     const path = road.current
     const len = path.getTotalLength()
     setGeo({ len, pins: STOP_AT.map((f) => path.getPointAtLength(f * len)) })
-  }, [])
+  }, [layout])
 
   const t = clamp((p - INTRO) / (OUTRO - INTRO))
   const walking = p > INTRO && p < OUTRO + 0.04
@@ -46,7 +77,7 @@ export default function Journey() {
   })
   const stop = journey.stops[Math.max(0, active)]
 
-  let dot = { x: 90, y: 600 }
+  let dot = { x: 0, y: 0 }
   let zoom = 1
   let cam = { x: W / 2, y: H / 2 }
   if (geo) {
@@ -61,7 +92,7 @@ export default function Journey() {
     }
   }
   // On phones the story card sits at the bottom, so keep the walker in the upper part of the map.
-  const lift = typeof window !== 'undefined' && window.innerWidth < 768 && zoom > 1 ? 150 * ((zoom - 1) / 0.55) : 0
+  const lift = layout === 'tall' && zoom > 1 ? 260 * ((zoom - 1) / 0.55) : 0
   const camera = `translate(${W / 2} ${H / 2 - lift}) scale(${zoom}) translate(${-cam.x} ${-cam.y})`
   const overview = p < INTRO * 0.6 || p > OUTRO + 0.04
 
@@ -83,22 +114,21 @@ export default function Journey() {
           <g transform={camera}>
             <rect x="-600" y="-400" width={W + 1200} height={H + 800} fill="url(#jgrid)" />
             <g className="streets">
-              <path d="M-200 300 L1400 260" />
-              <path d="M300 -100 L340 900" />
-              <path d="M760 -100 L700 900" />
-              <path d="M-200 520 L1400 640" />
-              <path d="M1000 -100 L1060 900" />
+              {L.streets.map((d) => (
+                <path key={d} d={d} />
+              ))}
             </g>
-            <ellipse className="park" cx="250" cy="250" rx="90" ry="50" />
-            <ellipse className="park" cx="980" cy="520" rx="110" ry="60" />
-            <path className="river" d="M-200 380 C200 340 500 380 800 330 S1200 300 1400 340" />
-            <text className="city" x="120" y="660">MEERUT</text>
-            <text className="city" x="960" y="90">GURGAON</text>
-            <path ref={road} className="road-base" d={ROAD} />
+            {L.parks.map(([cx, cy, rx, ry]) => (
+              <ellipse key={cx} className="park" cx={cx} cy={cy} rx={rx} ry={ry} />
+            ))}
+            <path className="river" d={L.river} />
+            <text className="city" x={L.from[0]} y={L.from[1]}>MEERUT</text>
+            <text className="city" x={L.to[0]} y={L.to[1]}>GURGAON</text>
+            <path ref={road} className="road-base" d={L.road} />
             {geo && (
               <path
                 className="road-done"
-                d={ROAD}
+                d={L.road}
                 strokeDasharray={geo.len}
                 strokeDashoffset={geo.len * (1 - t)}
               />
@@ -107,7 +137,7 @@ export default function Journey() {
               geo.pins.map((pt, i) => (
                 <g key={i} transform={`translate(${pt.x} ${pt.y - 4})`}>
                   <PinMark color={journey.stops[i].color} icon={journey.stops[i].icon} active={i === active} />
-                  <text className="pin-label" x="28" y="-28">
+                  <text className="pin-label" x={layout === 'tall' && pt.x > W / 2 ? -28 : 28} y="-28" textAnchor={layout === 'tall' && pt.x > W / 2 ? 'end' : 'start'}>
                     {journey.stops[i].place.split(' · ')[0]}
                   </text>
                 </g>

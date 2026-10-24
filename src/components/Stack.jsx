@@ -8,11 +8,11 @@ const SI = { siClaude, siFigma, siGooglesheets, siMake, siN8n, siNotion, siShopi
 // Brand marks on dark/neutral colours read badly, so give those a light tile instead.
 const LIGHT_TILE = new Set(['Notion', 'Vercel', 'Make'])
 
-function Logo({ tool }) {
+function Logo({ tool, size = 30 }) {
   const s = tool.si && SI[tool.si]
-  if (!s) return <Icon name={tool.lucide} size={30} />
+  if (!s) return <Icon name={tool.lucide} size={size} />
   return (
-    <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
       <path d={s.path} />
     </svg>
   )
@@ -21,12 +21,13 @@ function Logo({ tool }) {
 function tileStyle(tool) {
   const s = tool.si && SI[tool.si]
   if (LIGHT_TILE.has(tool.name)) return { background: '#fdf6f3', color: '#111' }
-  return { background: tool.bg || `#${s.hex}`, color: '#fff' }
+  return { background: tool.bg || `#${s.hex}`, color: tool.dark ? '#111' : '#fff' }
 }
 
 export default function Stack() {
-  const [active, setActive] = useState(null)
-  const tool = active !== null ? stack.tools[active] : null
+  const [active, setActive] = useState(null) // { g, t }
+  const group = active && stack.groups[active.g]
+  const tool = group && group.tools[active.t]
 
   return (
     <section id="stack" className="stack" aria-labelledby="stack-title">
@@ -48,11 +49,11 @@ export default function Stack() {
             <>
               <div className="tool-card-top">
                 <span className="tile sm" style={tileStyle(tool)}>
-                  <Logo tool={tool} />
+                  <Logo tool={tool} size={24} />
                 </span>
                 <span>
                   <b>{tool.name}</b>
-                  <small>{tool.verb}</small>
+                  <small>{group.name}</small>
                 </span>
               </div>
               <p>{tool.line}</p>
@@ -62,24 +63,37 @@ export default function Stack() {
           )}
         </aside>
 
-        <ul className={`tools-grid${tool ? ' dim' : ''}`} onMouseLeave={() => setActive(null)}>
-          {stack.tools.map((t, i) => (
-            <li key={t.name}>
-              <button
-                className={`tool${active === i ? ' on' : ''}`}
-                onMouseEnter={() => setActive(i)}
-                onFocus={() => setActive(i)}
-                onClick={() => setActive(active === i ? null : i)}
-                aria-pressed={active === i}
-              >
-                <span className="tile" style={tileStyle(t)}>
-                  <Logo tool={t} />
-                </span>
-                <span className="tool-name">{t.name}</span>
-              </button>
-            </li>
+        <div className={`shelves${tool ? ' dim' : ''}`} onMouseLeave={() => setActive(null)}>
+          {stack.groups.map((g, gi) => (
+            <div key={g.name} className={`shelf${active?.g === gi ? ' live' : ''}`}>
+              <h3 className="shelf-name">
+                {g.name}
+                <span>{g.tools.length}</span>
+              </h3>
+              <ul className="tools-grid">
+                {g.tools.map((t, ti) => {
+                  const on = active?.g === gi && active?.t === ti
+                  return (
+                    <li key={t.name}>
+                      <button
+                        className={`tool${on ? ' on' : ''}`}
+                        onMouseEnter={() => setActive({ g: gi, t: ti })}
+                        onFocus={() => setActive({ g: gi, t: ti })}
+                        onClick={() => setActive(on ? null : { g: gi, t: ti })}
+                        aria-pressed={on}
+                      >
+                        <span className="tile" style={tileStyle(t)}>
+                          <Logo tool={t} />
+                        </span>
+                        <span className="tool-name">{t.name}</span>
+                      </button>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   )
