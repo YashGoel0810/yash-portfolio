@@ -21,6 +21,12 @@ export default function Ventures() {
             </div>
             <h3>{v.name}</h3>
             <p>{v.kind}</p>
+            {v.cta && (
+              <a className="note-cta" href={v.cta.href} target="_blank" rel="noopener">
+                <Icon name="MessageCircle" size={18} />
+                {v.cta.label}
+              </a>
+            )}
           </li>
         ))}
       </ul>

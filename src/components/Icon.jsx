@@ -1,4 +1,4 @@
-import { ArrowDown, Bot, Car, Clapperboard, Feather, Fuel, Gem, Gift, GraduationCap, Landmark, Mail, MessageSquare, Orbit, Palette, PenLine, Salad, Sparkles, WandSparkles } from 'lucide-react'
+import { ArrowDown, Bot, Briefcase, MessageCircle, Car, Clapperboard, Feather, Fuel, Gem, Gift, GraduationCap, Landmark, Mail, MessageSquare, Orbit, Palette, PenLine, Salad, Sparkles, WandSparkles } from 'lucide-react'
 
 function LinkedinGlyph(props) {
   // lucide dropped brand icons; simple "in" mark drawn by hand.
@@ -11,7 +11,7 @@ function LinkedinGlyph(props) {
   )
 }
 
-const MAP = { ArrowDown, Bot, Car, Clapperboard, Feather, Fuel, Gem, Gift, GraduationCap, Landmark, Mail, MessageSquare, Orbit, Palette, PenLine, Salad, Sparkles, WandSparkles, Linkedin: LinkedinGlyph }
+const MAP = { ArrowDown, Bot, Briefcase, MessageCircle, Car, Clapperboard, Feather, Fuel, Gem, Gift, GraduationCap, Landmark, Mail, MessageSquare, Orbit, Palette, PenLine, Salad, Sparkles, WandSparkles, Linkedin: LinkedinGlyph }
 
 export default function Icon({ name, size = 24, ...rest }) {
   const C = MAP[name]

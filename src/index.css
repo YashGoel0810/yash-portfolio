@@ -1085,6 +1085,24 @@ button {
   margin: 0;
   font-size: 17px;
 }
+.note-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.note-cta:hover {
+  transform: translateY(-2px);
+  background: #25a95b;
+}
 
 /* ---------- stack: spotlight + tool tiles ---------- */
 .stack {

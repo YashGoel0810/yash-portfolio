@@ -192,6 +192,15 @@ export const projects = {
             'Deal boards for buying and selling, purchase orders and goods receipt',
           ],
         },
+        {
+          h: 'Competitor intelligence',
+          items: [
+            'Found 95 competitor stores from 25 searches, then scored them down to the 11 that matter',
+            'Pulled their full catalogues: 13,519 products, with a photo of each',
+            'Compares price bands, stock levels and range across 15 product segments',
+            'Tracks price and stock changes, so I see a competitor move before customers do',
+          ],
+        },
       ],
       result: [
         { v: '3', l: 'systems, one brand' },
@@ -306,6 +315,15 @@ export const ventures = {
   title: 'Ventures, labelled honestly.',
   sub: "Some made money, some are still being built. I'd rather say which is which.",
   items: [
+    {
+      name: 'Opetera',
+      kind: 'My consulting arm: AI automation for companies, built in your accounts and handed over',
+      badge: 'consulting',
+      icon: 'Briefcase',
+      tilt: 1,
+      color: '#f3c96b',
+      cta: { label: 'Message me', href: 'https://wa.me/919690546709?text=Hi%20Yash%2C%20I%27d%20like%20to%20talk%20about%20consulting.' },
+    },
     { name: 'Pitaari', kind: 'Silver gifting brand', badge: 'pre-launch', icon: 'Gift', tilt: -2, color: '#f6d6cf' },
     { name: 'Troofrnd', kind: 'LinkedIn content SaaS, with a co-founder', badge: 'building', icon: 'PenLine', tilt: 1.5, color: '#fbe7b5' },
     { name: 'Fuel Station', kind: 'College venture · healthy meals & fresh fruit · ₹2L revenue, ₹1L profit in 2 months', badge: 'shut down', icon: 'Salad', tilt: -1, color: '#d4ecd9' },
@@ -364,6 +382,7 @@ export const contact = {
   sub: "Founders' offices, AI agents, automation. Tell me what's broken and I'll tell you how I'd fix it.",
   keys: [
     { k: 'E', label: 'Email', icon: 'Mail', color: '#e0443b', note: 'Roles, projects, or just hi.', href: 'mailto:ygoel0810@gmail.com', copy: 'ygoel0810@gmail.com' },
+    { k: 'W', label: 'WhatsApp', icon: 'MessageCircle', color: '#25d366', note: 'Want consultancy? Message me on WhatsApp.', href: 'https://wa.me/919690546709?text=Hi%20Yash%2C%20I%27d%20like%20to%20talk%20about%20consulting.' },
     { k: 'L', label: 'LinkedIn', icon: 'Linkedin', color: '#0a66c2', note: 'The long version of my story.', href: 'https://linkedin.com/in/yashgoel0810' },
     { k: 'R', label: 'Resume', icon: 'ArrowDown', color: '#f3c96b', dark: true, note: 'My resume, one click away.', href: `${BASE}resume.pdf`, download: true },
   ],
