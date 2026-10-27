@@ -52,7 +52,12 @@ export default function Hero() {
         </Draggable>
       ))}
 
-      <Draggable className="lined" style={at(21, 5, -2)} label="Off the clock note">
+      {/* Anchored to the centred name, not the page edge, so the note never covers it. */}
+      <Draggable
+        className="lined"
+        style={{ ...at(21, 5, -2), left: 'max(1%, calc(50% - min(14.4vw, 205px) - 300px))' }}
+        label="Off the clock note"
+      >
         <Pin color="#3b7de0" />
         <p className="lined-kicker">{note.kicker}</p>
         <p className="lined-title">{note.title}</p>

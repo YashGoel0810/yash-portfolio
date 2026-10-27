@@ -3,9 +3,20 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 // Screenshot carousel for a project card: native scroll-snap (so touch swipe just works),
 // arrow buttons, dots, and the menu/screen name under each slide.
+// A slide with `video` plays muted on loop, only while it's on screen.
 export default function Carousel({ shots, title }) {
   const track = useRef(null)
   const [i, setI] = useState(0)
+
+  useEffect(() => {
+    const vids = track.current?.querySelectorAll('video') ?? []
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())),
+      { threshold: 0.5 },
+    )
+    vids.forEach((v) => io.observe(v))
+    return () => io.disconnect()
+  }, [])
 
   useEffect(() => {
     const el = track.current
@@ -26,7 +37,11 @@ export default function Carousel({ shots, title }) {
       <div className="car-track" ref={track} tabIndex={0}>
         {shots.map((s, n) => (
           <div className="car-slide" key={s.src} aria-roledescription="slide" aria-label={`${n + 1} of ${shots.length}: ${s.label}`}>
-            <img src={s.src} alt={`${title}: ${s.label}`} width="1440" height="900" loading="lazy" decoding="async" />
+            {s.video ? (
+              <video src={s.video} poster={s.src} muted loop playsInline preload="none" width="1280" height="800" aria-label={`${title}: ${s.label}`} />
+            ) : (
+              <img src={s.src} alt={`${title}: ${s.label}`} width="1440" height="900" loading="lazy" decoding="async" />
+            )}
           </div>
         ))}
       </div>

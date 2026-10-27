@@ -30,7 +30,10 @@ export default function Projects() {
                   onClick={() => setOpen(isOpen ? null : p.n)}
                 >
                   <span className="num">{p.n}</span>
-                  <span className="proj-title">{p.title}</span>
+                  <span className="proj-title">
+                    {p.title}
+                    {p.beta && <span className="proj-beta">beta</span>}
+                  </span>
                   <span className="proj-tag">{p.tag}</span>
                   <span className="proj-toggle" aria-hidden="true">
                     <Plus size={22} />

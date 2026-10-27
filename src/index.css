@@ -582,6 +582,18 @@ button {
   font-size: clamp(26px, 3vw, 40px);
   line-height: 1.05;
 }
+.proj-beta {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 2px 10px;
+  border: 1px dashed var(--c);
+  border-radius: 999px;
+  font-family: var(--font-hand);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--c);
+  vertical-align: middle;
+}
 .proj-tag {
   font-size: 15px;
   color: var(--blush);
@@ -652,7 +664,8 @@ button {
   flex: 0 0 100%;
   scroll-snap-align: start;
 }
-.car-slide img {
+.car-slide img,
+.car-slide video {
   display: block;
   width: 100%;
   height: auto;

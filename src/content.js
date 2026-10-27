@@ -28,7 +28,13 @@ export const hero = {
     kicker: 'Off the clock',
     title: "Hi, I'm Yash. The weekend version.",
     lists: [
-      { h: "Things I can't stop doing", items: ['Thinking up AI projects', 'Building maybe the next big thing (idle in my GitHub)', 'Snooker, or any sport going', 'Hosting poker nights'] },
+      { h: "Things I can't stop doing", items: [
+          'Thinking up AI projects',
+          'Building the next big thing (idle in my GitHub, for now)',
+          'Snooker at a quiet resort: my peace',
+          'Any sport, any time',
+          'Hosting poker nights',
+        ] },
       { h: 'Habits', items: ['Figure out the whole problem', 'Write it down', "Ship before it's perfect"] },
     ],
   },
@@ -234,6 +240,7 @@ export const projects = {
       n: '04',
       title: 'Munshi',
       shots: [
+        { src: `${BASE}videos/munshi.jpg`, video: `${BASE}videos/munshi.mp4`, label: 'Demo · enquiry to approved quote' },
         { src: `${BASE}shots/munshi-dashboard.jpg`, label: 'Dashboard' },
         { src: `${BASE}shots/munshi-udhaar.jpg`, label: 'Udhaar' },
         { src: `${BASE}shots/munshi-orders.jpg`, label: 'Orders' },
@@ -243,6 +250,7 @@ export const projects = {
         { src: `${BASE}shots/munshi-automations.jpg`, label: 'Automations' },
       ],
       tag: 'WhatsApp assistant for traders',
+      beta: true,
       color: '#5fbf8f',
       summary:
         'A munshi for the WhatsApp age. It answers customer enquiries, checks stock, matches supplier prices and keeps the udhaar book, inside the app traders already live in.',
@@ -258,11 +266,13 @@ export const projects = {
       n: '05',
       title: 'Forge',
       shots: [
+        { src: `${BASE}videos/forge.jpg`, video: `${BASE}videos/forge.mp4`, label: 'Demo · the board at work' },
         { src: `${BASE}shots/forge-board.jpg`, label: 'Job board' },
         { src: `${BASE}shots/forge-job.jpg`, label: 'Why Forge thinks it fits' },
         { src: `${BASE}shots/forge-chat.jpg`, label: 'Ask Forge' },
       ],
       tag: 'My job search, as a pipeline',
+      beta: true,
       color: '#a98be0',
       summary:
         'Job hunting is a pipeline too. Forge finds roles, tailors a CV for each one, checks it, and waits for my yes before anything goes out.',
