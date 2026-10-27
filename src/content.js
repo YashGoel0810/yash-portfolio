@@ -6,7 +6,7 @@ const BASE = import.meta.env.BASE_URL
 export const person = {
   name: 'Yash Goel',
   first: 'Yash',
-  email: 'ygoel0810@gmail.com',
+  email: 'yashgoel.work08@gmail.com',
   linkedin: 'https://linkedin.com/in/yashgoel0810',
   resume: `${BASE}resume.pdf`, // drop the PDF into site/public/resume.pdf
   location: 'Gurgaon, India',
@@ -391,7 +391,7 @@ export const contact = {
   title: ['Got a messy problem?', "Let's fix it."],
   sub: "Founders' offices, AI agents, automation. Tell me what's broken and I'll tell you how I'd fix it.",
   keys: [
-    { k: 'E', label: 'Email', icon: 'Mail', color: '#e0443b', note: 'Roles, projects, or just hi.', href: 'mailto:ygoel0810@gmail.com', copy: 'ygoel0810@gmail.com' },
+    { k: 'E', label: 'Email', icon: 'Mail', color: '#e0443b', note: 'Roles, projects, or just hi.', href: 'mailto:yashgoel.work08@gmail.com', copy: 'yashgoel.work08@gmail.com' },
     { k: 'W', label: 'WhatsApp', icon: 'MessageCircle', color: '#25d366', note: 'Want consultancy? Message me on WhatsApp.', href: 'https://wa.me/919690546709?text=Hi%20Yash%2C%20I%27d%20like%20to%20talk%20about%20consulting.' },
     { k: 'L', label: 'LinkedIn', icon: 'Linkedin', color: '#0a66c2', note: 'The long version of my story.', href: 'https://linkedin.com/in/yashgoel0810' },
     { k: 'R', label: 'Resume', icon: 'ArrowDown', color: '#f3c96b', dark: true, note: 'My resume, one click away.', href: `${BASE}resume.pdf`, download: true },
